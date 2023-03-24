@@ -1,0 +1,35 @@
+header {
+  background-color: var(--color-dark);
+  display: flex;
+  justify-content: center;
+}
+
+.header-inner {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.header-logo {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.header-links ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+.header-links ul > li {
+  margin-left: .7rem;
+}
+
+@media screen and (min-width: 940px) {
+  .header-inner {
+    width: 940px;
+  }
+}
