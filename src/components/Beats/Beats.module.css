@@ -1,5 +1,10 @@
 .beats {
   display: flex;
   justify-content: center;
+}
+
+.beats ul {
+  display: flex;
+  justify-content: center;
   gap: 1rem;
 }
