@@ -9,6 +9,11 @@
   height: 120px;
   padding: 2px;
   text-align: center;
+  transition: 300ms;
+}
+
+.beat:hover {
+  box-shadow: 0 0 8px var(--color-white);
 }
 
 .beat__bar {
