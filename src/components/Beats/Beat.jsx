@@ -18,7 +18,9 @@ const Beat = ({ id, level }) => {
 
   return (
     <div className={styles.beat} onClick={clickHandler}>
-      Beat {id}, level {level}
+      <div className={`${styles['beat__bar']} ${level >= 3 ? styles['beat__bar--active'] : ''}`}></div>
+      <div className={`${styles['beat__bar']} ${level >= 2 ? styles['beat__bar--active'] : ''}`}></div>
+      <div className={`${styles['beat__bar']} ${styles['beat__bar--active']}`}></div>
     </div>
   );
 };

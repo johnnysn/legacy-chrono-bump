@@ -1,5 +1,22 @@
 .beat {
   border: 1px solid white;
-  border-radius: 5px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  height: 120px;
+  padding: 2px;
   text-align: center;
+}
+
+.beat__bar {
+  border-radius: 5px;
+  height: 20px;
+  width: 80px;
+}
+
+.beat__bar--active {
+  background-color: var(--color-accent-light);
 }
