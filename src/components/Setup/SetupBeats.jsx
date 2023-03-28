@@ -1,7 +1,7 @@
-import styles from './SetupBeats.module.css';
+import styles from "./SetupBeats.module.css";
 
 const SetupBeats = () => {
-  return <>Setup beats</>;
+  return <div className={styles["setup-beats"]}></div>;
 };
 
 export default SetupBeats;

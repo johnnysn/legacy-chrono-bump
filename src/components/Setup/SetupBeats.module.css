@@ -1,0 +1,4 @@
+.setup-beats {
+  display: flex;
+  flex-direction: column;
+}
