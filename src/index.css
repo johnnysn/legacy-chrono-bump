@@ -3,8 +3,12 @@
   --color-background: #444444;
   --color-light: #e1e1e1;
   --color-white: #ffffff;
-  --color-accent-light: azure;
+  --color-accent-light: #D4F1F4;
+  --color-accent: #5885AF;
+  --color-accent-dark: #274472; 
 }
+
+/* #41729F #5885AF #274472 #C3E0E5 */
 
 * {
   box-sizing: border-box;
