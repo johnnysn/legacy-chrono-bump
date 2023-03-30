@@ -22,6 +22,10 @@
   background-color: var(--color-accent);
 }
 
+.beat--bumped {
+  background-color: var(--color-accent-2);
+}
+
 .beat__bar {
   border-radius: 5px;
   height: 20px;

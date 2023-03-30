@@ -10,11 +10,11 @@ const SetupTempo = () => {
   };
 
   const incHandler = () => {
-    ctxBeats.setTempo(ctxBeats.tempo + 1);
+    ctxBeats.setTempo(+ctxBeats.tempo + 1);
   };
 
   const decHandler = () => {
-    ctxBeats.setTempo(ctxBeats.tempo - 1);
+    ctxBeats.setTempo(+ctxBeats.tempo - 1);
   };
 
   return (

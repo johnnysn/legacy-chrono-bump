@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { click1 } from "../../store/beats-audio";
 import BeatsContext from "../../store/beats-context";
 import styles from "./Player.module.css";
 
@@ -7,8 +8,8 @@ const Player = () => {
 
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const playClickHandler = event => {
-    setIsPlaying( prevState => !prevState );
+  const playClickHandler = (event) => {
+    setIsPlaying((prevState) => !prevState);
   };
 
   useEffect(() => {
@@ -16,13 +17,22 @@ const Player = () => {
     let beat = 1;
     if (isPlaying) {
       interval = setInterval(() => {
-        console.log(beat);
-        beat = (beat >= ctx.items.length) ? 1 : beat + 1;
-      }, (60000 / ctx.tempo));
+        //console.log(beat);
+        const audio = click1;
+        if (audio.paused) {
+          audio.play();
+        } else {
+          audio.currentTime = 0;
+        }
+        ctx.setBeat(beat);
+        beat = beat >= ctx.items.length ? 1 : beat + 1;
+      }, 60000 / ctx.tempo);
+    } else {
+      ctx.setBeat(0);
     }
-  
+
     return () => {
-      console.log('CLEANUP');
+      console.log("CLEANUP");
       if (interval) clearInterval(interval);
     };
   }, [isPlaying, ctx.tempo, ctx.items]);

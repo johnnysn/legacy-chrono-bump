@@ -1,0 +1,1 @@
+export const click1 = new Audio("click1.mp3");

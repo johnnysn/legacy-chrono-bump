@@ -8,6 +8,7 @@ const defaultBeatsState = {
     { id: 3, level: 2 },
     { id: 4, level: 2 },
   ],
+  beat: 0,
   tempo: 100,
 };
 
@@ -44,6 +45,12 @@ const setCount = (state, count) => {
   return { ...state, items: newitems };
 };
 
+const setBeat = (state, beat) => {
+  if (beat < 0 || beat > state.items.length) return state;
+
+  return { ...state, beat: beat };
+}
+
 const beatsReducer = (state, action) => {
   if (action.type === "setTempo") {
     return setTempo(state, action.tempo);
@@ -51,6 +58,8 @@ const beatsReducer = (state, action) => {
     return setLevel(state, action.id, action.level);
   } else if (action.type === "setCount") {
     return setCount(state, action.count);
+  } else if (action.type === "setBeat") {
+    return setBeat(state, action.beat);
   }
 
   return defaultBeatsState;
@@ -70,6 +79,8 @@ const BeatsProvider = ({ children }) => {
       dispatchBeatsAction({ type: "setCount", count: count }),
     setLevel: (id, level) =>
       dispatchBeatsAction({ type: "setLevel", id: id, level: level }),
+    setBeat: (beat) =>
+      dispatchBeatsAction({ type: "setBeat", beat: beat }),
   };
 
   return (
