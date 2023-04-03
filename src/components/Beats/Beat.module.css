@@ -14,6 +14,28 @@
   transition: 300ms;
 }
 
+.beat--thin {
+  width: 49px;
+}
+
+.beat--thiner {
+  width: 40px;
+}
+
+@media screen and (min-width: 940px) {
+  .beat {
+    width: 90px;
+  }
+
+  .beat--thin {
+    width: 90px;
+  }
+  
+  .beat--thiner {
+    width: 90px;
+  }
+}
+
 .beat:hover {
   box-shadow: 0 0 8px var(--color-white);
 }

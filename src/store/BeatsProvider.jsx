@@ -35,8 +35,8 @@ const setCount = (state, count) => {
 
   let newitems = [...state.items];
   if (count > state.items.length) {
-    for (let i = count; i < state.items.length; i++) {
-      newitems.concat({ id: i, level: 2 });
+    for (let i = state.items.length; i < count; i++) {
+      newitems.push({ id: i + 1, level: 2 });
     }
   } else if (count < state.items.length) {
     newitems = newitems.slice(0, count);

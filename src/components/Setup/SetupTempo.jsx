@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import BeatsContext from "../../store/beats-context";
+import IncDec from "../UI/IncDec";
 import styles from "./SetupTempo.module.css";
 
 const SetupTempo = () => {
@@ -19,17 +20,7 @@ const SetupTempo = () => {
 
   return (
     <div className={styles["setup-tempo"]}>
-      <div className={styles["setup-tempo__value"]}>
-        <div className={styles["setup-tempo__value__btn"]} onClick={decHandler}>
-          {" "}
-          -{" "}
-        </div>
-        <h2>{ctxBeats.tempo}</h2>
-        <div className={styles["setup-tempo__value__btn"]} onClick={incHandler}>
-          {" "}
-          +{" "}
-        </div>
-      </div>
+      <IncDec value={ctxBeats.tempo} onInc={incHandler} onDec={decHandler} />
       <form>
         <input
           type="range"
@@ -37,6 +28,7 @@ const SetupTempo = () => {
           id="rgTempo"
           min={40}
           max={200}
+          step={5}
           value={ctxBeats.tempo || 100}
           onChange={changeHandler}
         />

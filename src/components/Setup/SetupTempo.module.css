@@ -4,35 +4,6 @@
   align-items: center;
 }
 
-.setup-tempo__value {
-  display: grid;
-  grid-template-columns: 40px 135px 40px;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-}
-
-.setup-tempo__value__btn {
-  color: var(--color-light);
-  cursor: pointer;
-  font-size: 2.6rem;
-  transition: 300ms;
-  text-align: center;
-
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
-}
-
-.setup-tempo__value__btn:hover {
-  color: var(--color-white);
-}
-
-.setup-tempo h2 {
-  font-size: 4.5rem;
-  text-align: center;
-}
-
 .setup-tempo input {
   width: 250px;
 }

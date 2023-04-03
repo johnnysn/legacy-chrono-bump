@@ -1,0 +1,28 @@
+.inc-dec {
+  display: grid;
+  grid-template-columns: 40px 135px 40px;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.inc-dec__btn {
+  color: var(--color-light);
+  cursor: pointer;
+  font-size: 2.6rem;
+  transition: 300ms;
+  text-align: center;
+
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.inc-dec__btn:hover {
+  color: var(--color-white);
+}
+
+.inc-dec h2 {
+  font-size: 4.5rem;
+  text-align: center;
+}
