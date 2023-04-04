@@ -15,7 +15,7 @@ const SetupBeats = () => {
   }
 
   return <div className={styles["setup-beats"]}>
-    <IncDec onInc={incHandler} onDec={decHandler} value={ctx.items.length} />
+    <IncDec onInc={incHandler} onDec={decHandler} value={ctx.items.length} label={'# of beats'} />
   </div>;
 };
 

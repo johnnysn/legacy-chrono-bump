@@ -1,4 +1,10 @@
 .inc-dec {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inc-dec-box {
   display: grid;
   grid-template-columns: 40px 135px 40px;
   justify-content: center;
@@ -22,7 +28,14 @@
   color: var(--color-white);
 }
 
-.inc-dec h2 {
+.inc-dec__label {
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+  text-align: center;
+}
+
+.inc-dec__value {
   font-size: 4.5rem;
+  line-height: 4.8rem;
   text-align: center;
 }

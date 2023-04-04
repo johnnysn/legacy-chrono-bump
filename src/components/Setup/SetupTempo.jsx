@@ -20,7 +20,7 @@ const SetupTempo = () => {
 
   return (
     <div className={styles["setup-tempo"]}>
-      <IncDec value={ctxBeats.tempo} onInc={incHandler} onDec={decHandler} />
+      <IncDec value={ctxBeats.tempo} label={'BPM'} onInc={incHandler} onDec={decHandler} />
       <form>
         <input
           type="range"
