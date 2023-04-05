@@ -1,17 +1,29 @@
-import { useState } from 'react'
-import Footer from './components/Layout/Footer'
-import Header from './components/Layout/Header'
-import Main from './components/Layout/Main'
+import Layout from "./components/Layout/Layout";
+import Main from "./components/Routes/Main";
+import About from "./components/Routes/About";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <Layout>
+        <Main />
+      </Layout>
+    ),
+  },
+  {
+    path: "about",
+    element: (
+      <Layout>
+        <About />
+      </Layout>
+    ),
+  },
+]);
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (<>
-    <Header />
-    <Main />
-    <Footer />
-  </>
-  )
+  return <RouterProvider router={router} />;
 }
 
-export default App
+export default App;
