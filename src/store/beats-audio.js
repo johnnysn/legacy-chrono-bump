@@ -1,1 +1,1 @@
-export const click1 = new Audio("click1.mp3");
+export const clicks = [new Audio("click1.mp3"), new Audio("click2.mp3"), new Audio("click3.mp3")];

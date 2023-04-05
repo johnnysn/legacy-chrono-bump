@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { click1 } from "../../store/beats-audio";
+import { clicks } from "../../store/beats-audio";
 import BeatsContext from "../../store/beats-context";
 import styles from "./Player.module.css";
 import Timer from "../../lib/timer";
@@ -18,7 +18,8 @@ const Player = () => {
     let beat = 1;
 
     const play = () => {
-      const audio = click1;
+      const level = ctx.items.find(b => b.id === beat).level;
+      const audio = clicks[level - 1];
       if (audio.paused) {
         audio.play();
       } else {
