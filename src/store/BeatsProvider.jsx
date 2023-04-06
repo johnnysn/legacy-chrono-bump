@@ -22,9 +22,8 @@ const setLevel = (state, id, level) => {
   const itemIndex = state.items.findIndex((i) => i.id === id);
   const item = state.items[itemIndex];
   if (item) {
-    const newitems = [...state.items];
-    newitems[itemIndex] = { ...item, level: level };
-    return { ...state, items: newitems };
+    state.items[itemIndex] = { ...item, level: level };
+    return { ...state };
   }
 
   return state;
