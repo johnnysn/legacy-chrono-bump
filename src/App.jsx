@@ -1,9 +1,9 @@
 import Layout from "./components/Layout/Layout";
 import Main from "./components/Routes/Main";
 import About from "./components/Routes/About";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: (

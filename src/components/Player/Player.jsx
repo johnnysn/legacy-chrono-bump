@@ -44,7 +44,7 @@ const Player = () => {
   return (
     <div className={styles.player}>
       <button type="button" onClick={playClickHandler}>
-        <img src="/play-pause-button-96.png" width="90px" height="90px" />
+        <img src="play-pause-button-96.png" width="90px" height="90px" />
       </button>
     </div>
   );
