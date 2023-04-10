@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { clicks } from "../../store/beats-audio";
+import { audioContext } from "../../store/beats-audio";
 import BeatsContext from "../../store/beats-context";
 import styles from "./Player.module.css";
 import Timer from "../../lib/timer";
@@ -19,12 +19,22 @@ const Player = () => {
 
     const play = () => {
       const level = ctx.items.find(b => b.id === beat).level;
-      const audio = clicks[level - 1];
-      if (audio.paused) {
-        audio.play();
-      } else {
-        audio.currentTime = 0;
-      }
+      
+      const osc = audioContext.createOscillator();
+      const envelope = audioContext.createGain();
+          
+      const time = audioContext.currentTime;
+      osc.frequency.value = (level > 2) ? 1000 : (level > 1 ? 800 : 600);
+      envelope.gain.value = 1;
+      envelope.gain.exponentialRampToValueAtTime(1, time + 0.001);
+      envelope.gain.exponentialRampToValueAtTime(0.001, time + 0.02);
+
+      osc.connect(envelope);
+      envelope.connect(audioContext.destination);
+      
+      osc.start(time);
+      osc.stop(time + 0.03);
+
       ctx.setBeat(beat);
       beat = beat >= ctx.items.length ? 1 : beat + 1;
     };

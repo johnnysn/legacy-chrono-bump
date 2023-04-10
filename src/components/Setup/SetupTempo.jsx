@@ -27,7 +27,7 @@ const SetupTempo = () => {
           name="rgTempo"
           id="rgTempo"
           min={40}
-          max={200}
+          max={240}
           step={5}
           value={ctxBeats.tempo || 100}
           onChange={changeHandler}
