@@ -39,7 +39,7 @@ function Timer(callback, timeInterval, options) {
     callback();
     // Increment expected time by time interval for every round after running the callback function.
     this.expected += this.timeInterval;
-    console.log('Drift:', drift);
+    // console.log('Drift:', drift);
     //console.log('Next round time interval:', this.timeInterval - drift);
     // Run timeout again and set the timeInterval of the next iteration to the original time interval minus the drift.
     this.timeout = setTimeout(this.round, this.timeInterval - drift);

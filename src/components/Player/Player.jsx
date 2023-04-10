@@ -27,13 +27,13 @@ const Player = () => {
       osc.frequency.value = (level > 2) ? 1000 : (level > 1 ? 800 : 600);
       envelope.gain.value = 1;
       envelope.gain.exponentialRampToValueAtTime(1, time + 0.001);
-      envelope.gain.exponentialRampToValueAtTime(0.001, time + 0.02);
+      envelope.gain.exponentialRampToValueAtTime(0.001, time + 0.015);
 
       osc.connect(envelope);
       envelope.connect(audioContext.destination);
       
       osc.start(time);
-      osc.stop(time + 0.03);
+      osc.stop(time + 0.02);
 
       ctx.setBeat(beat);
       beat = beat >= ctx.items.length ? 1 : beat + 1;
