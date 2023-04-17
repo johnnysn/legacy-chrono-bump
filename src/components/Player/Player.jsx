@@ -1,12 +1,11 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import useStore from "../../hooks/use-store";
 import { audioContext } from "../../store/beats-audio";
-import BeatsContext from "../../store/beats-context";
 import styles from "./Player.module.css";
 import Timer from "../../lib/timer";
 
 const Player = () => {
-  const ctx = useContext(BeatsContext);
-
+  const [beatsState, dispatch] = useStore();
   const [isPlaying, setIsPlaying] = useState(false);
 
   const playClickHandler = (event) => {
@@ -18,7 +17,7 @@ const Player = () => {
     let beat = 1;
 
     const play = () => {
-      const level = ctx.items.find(b => b.id === beat).level;
+      const level = beatsState.items.find(b => b.id === beat).level;
       
       const osc = audioContext.createOscillator();
       const envelope = audioContext.createGain();
@@ -35,21 +34,21 @@ const Player = () => {
       osc.start(time);
       osc.stop(time + 0.02);
 
-      ctx.setBeat(beat);
-      beat = beat >= ctx.items.length ? 1 : beat + 1;
+      dispatch('SET_BEAT', beat);
+      beat = beat >= beatsState.items.length ? 1 : beat + 1;
     };
 
     if (isPlaying) {
-      timer = new Timer(play, 60000 / ctx.tempo, {immediate: true});
+      timer = new Timer(play, 60000 / beatsState.tempo, {immediate: true});
       timer.start();
     } else {
-      ctx.setBeat(0);
+      dispatch('SET_BEAT', 0);
     }
 
     return () => {
       if (timer) timer.stop();
     };
-  }, [isPlaying, ctx.tempo, ctx.items]);
+  }, [isPlaying, beatsState.tempo, beatsState.items]);
 
   return (
     <div className={styles.player}>

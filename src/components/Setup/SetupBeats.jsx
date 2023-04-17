@@ -1,21 +1,20 @@
-import { useContext } from "react";
-import BeatsContext from "../../store/beats-context";
 import IncDec from "../UI/IncDec";
 import styles from "./SetupBeats.module.css";
+import useStore from "../../hooks/use-store";
 
 const SetupBeats = () => {
-  const ctx = useContext(BeatsContext);
+  const [beatsState, dispatch] = useStore();
 
   const incHandler = () => {
-    ctx.setCount(ctx.items.length + 1);
+    dispatch('SET_COUNT', beatsState.items.length + 1);
   }
 
   const decHandler = () => {
-    ctx.setCount(ctx.items.length - 1);
+    dispatch('SET_COUNT', beatsState.items.length - 1);
   }
 
   return <div className={styles["setup-beats"]}>
-    <IncDec onInc={incHandler} onDec={decHandler} value={ctx.items.length} label={'# of beats'} />
+    <IncDec onInc={incHandler} onDec={decHandler} value={beatsState.items.length} label={'# of beats'} />
   </div>;
 };
 

@@ -1,12 +1,11 @@
-import { useContext } from "react";
-import BeatsContext from "../../store/beats-context";
+import useStore from "../../hooks/use-store";
 import Beat from "./Beat";
 import styles from "./Beats.module.css";
 
 const Beats = () => {
-  const beatsCtx = useContext(BeatsContext);
+  const beatsState = useStore()[0];
 
-  const items = beatsCtx.items.map((i) => (
+  const items = beatsState.items.map((i) => (
     <li key={i.id}>
       <Beat id={i.id} level={i.level} />
     </li>
