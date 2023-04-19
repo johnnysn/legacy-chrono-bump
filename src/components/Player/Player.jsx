@@ -21,18 +21,21 @@ const Player = () => {
       
       const osc = audioContext.createOscillator();
       const envelope = audioContext.createGain();
-          
-      const time = audioContext.currentTime;
-      osc.frequency.value = (level > 2) ? 1000 : (level > 1 ? 800 : 600);
+      
+      const time = audioContext.currentTime + 0.015;
+      osc.frequency.value = (level > 2) ? 440 : (level > 1 ? 360 : 280); // 1000 800 600
+      osc.type = 'triangle';
       envelope.gain.value = 1;
-      envelope.gain.exponentialRampToValueAtTime(1, time + 0.001);
-      envelope.gain.exponentialRampToValueAtTime(0.001, time + 0.015);
+      envelope.gain.exponentialRampToValueAtTime(1, time + 0.01);
+      //envelope.gain.setValueAtTime(1, time + 0.01);
+      envelope.gain.exponentialRampToValueAtTime(0.001, time + 0.05);
 
       osc.connect(envelope);
       envelope.connect(audioContext.destination);
       
+      
       osc.start(time);
-      osc.stop(time + 0.02);
+      osc.stop(time + 0.1);
 
       dispatch('SET_BEAT', beat);
       beat = beat >= beatsState.items.length ? 1 : beat + 1;
