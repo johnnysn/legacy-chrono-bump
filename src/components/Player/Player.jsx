@@ -1,19 +1,20 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import useStore from "../../hooks/use-store";
 import styles from "./Player.module.css";
-
-const AudioContext = window.AudioContext || window.webkitAudioContext; // Obtem o AudioContext compatível com o navegador
-const audioContext = new AudioContext();
-
-const envelope = audioContext.createGain();
-envelope.connect(audioContext.destination);
+import synthBeat from "../../beats/synth-beat";
+import recordedBeat from "../../beats/recorded-beat";
 
 const Player = () => {
   const [beatsState, dispatch] = useStore();
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isSynth, setIsSynth] = useState(false);
 
   const playClickHandler = () => {
     setIsPlaying((prevState) => !prevState);
+  };
+
+  const synthChangeHandler = (event) => {
+    setIsSynth(event.target.checked);
   };
 
   useEffect(() => {
@@ -21,24 +22,14 @@ const Player = () => {
     let beat = 1;
 
     const play = () => {
-      envelope.gain.cancelScheduledValues(0);
-      const level = beatsState.items.find(b => b.id === beat).level;
-      
-      const oscillator = audioContext.createOscillator();
-      oscillator.type = 'square';
-      oscillator.frequency.value = (level > 2) ? 1000 : (level > 1 ? 800 : 600);
-      oscillator.connect(envelope);
-      
-      envelope.gain.value = 0;
-      const time = audioContext.currentTime;
-      envelope.gain.linearRampToValueAtTime(1, time + 0.01);
-      envelope.gain.setValueAtTime(1, time + 0.04);
-      envelope.gain.linearRampToValueAtTime(0, time + 0.07);
-      
-      oscillator.start();
-      oscillator.stop(time + 0.1);
+      const level = beatsState.items.find((b) => b.id === beat).level;
 
-      dispatch('SET_BEAT', beat);
+      if (isSynth)
+        synthBeat(level);
+      else
+        recordedBeat(level);
+
+      dispatch("SET_BEAT", beat);
       beat = beat >= beatsState.items.length ? 1 : beat + 1;
 
       timeoutId = setTimeout(play, 60000 / beatsState.tempo);
@@ -47,7 +38,7 @@ const Player = () => {
     if (isPlaying) {
       play();
     } else {
-      dispatch('SET_BEAT', 0);
+      dispatch("SET_BEAT", 0);
     }
 
     return () => {
@@ -55,13 +46,17 @@ const Player = () => {
         clearTimeout(timeoutId);
       }
     };
-  }, [isPlaying, beatsState.tempo, beatsState.items]);
+  }, [isPlaying, isSynth, beatsState.tempo, beatsState.items]);
 
   return (
     <div className={styles.player}>
       <button type="button" onClick={playClickHandler}>
         <img src="play-pause-button-96.png" width="90px" height="90px" />
       </button>
+      <div className={styles.player__form}>
+        <input type="checkbox" name="synth" id="chkSynth" onChange={synthChangeHandler} />
+        <label htmlFor="chkSynth">Use synth beats</label>
+      </div>
     </div>
   );
 };
