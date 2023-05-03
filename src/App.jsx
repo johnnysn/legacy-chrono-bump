@@ -1,24 +1,22 @@
-import Layout from "./components/Layout/Layout";
-import Main from "./components/Routes/Main";
-import About from "./components/Routes/About";
-import { createHashRouter, RouterProvider } from "react-router-dom";
+import Root from './pages/Root';
+import Main from './pages/Main';
+import About from './pages/About';
+import { createHashRouter, RouterProvider } from 'react-router-dom';
 
 const router = createHashRouter([
   {
-    path: "/",
-    element: (
-      <Layout>
-        <Main />
-      </Layout>
-    ),
-  },
-  {
-    path: "about",
-    element: (
-      <Layout>
-        <About />
-      </Layout>
-    ),
+    path: '/',
+    element: <Root />,
+    children: [
+      {
+        index: true,
+        element: <Main />,
+      },
+      {
+        path: 'about',
+        element: <About />,
+      },
+    ],
   },
 ]);
 
