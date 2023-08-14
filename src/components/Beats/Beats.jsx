@@ -1,6 +1,6 @@
-import useStore from "../../hooks/use-store";
-import Beat from "./Beat";
-import styles from "./Beats.module.css";
+import useStore from '../../hooks/use-store';
+import Beat from './Beat';
+import styles from './Beats.module.css';
 
 const Beats = () => {
   const beatsState = useStore()[0];

@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
-import useStore from "../../hooks/use-store";
-import styles from "./Player.module.css";
-import synthBeat from "../../beats/synth-beat";
-import recordedBeat from "../../beats/recorded-beat";
+import { useState, useEffect } from 'react';
+import useStore from '../../hooks/use-store';
+import styles from './Player.module.css';
+import synthBeat from '../../beats/synth-beat';
+import recordedBeat from '../../beats/recorded-beat';
 
 const Player = () => {
   const [beatsState, dispatch] = useStore();
@@ -24,12 +24,10 @@ const Player = () => {
     const play = () => {
       const level = beatsState.items.find((b) => b.id === beat).level;
 
-      if (isSynth)
-        synthBeat(level);
-      else
-        recordedBeat(level);
+      if (isSynth) synthBeat(level);
+      else recordedBeat(level);
 
-      dispatch("SET_BEAT", beat);
+      dispatch('SET_BEAT', beat);
       beat = beat >= beatsState.items.length ? 1 : beat + 1;
 
       timeoutId = setTimeout(play, 60000 / beatsState.tempo);
@@ -38,7 +36,7 @@ const Player = () => {
     if (isPlaying) {
       play();
     } else {
-      dispatch("SET_BEAT", 0);
+      dispatch('SET_BEAT', 0);
     }
 
     return () => {

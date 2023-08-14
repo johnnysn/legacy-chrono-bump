@@ -1,6 +1,6 @@
-import "./Setup.css";
-import SetupBeats from "./SetupBeats";
-import SetupTempo from "./SetupTempo";
+import './Setup.css';
+import SetupBeats from './SetupBeats';
+import SetupTempo from './SetupTempo';
 
 const Setup = () => {
   return (

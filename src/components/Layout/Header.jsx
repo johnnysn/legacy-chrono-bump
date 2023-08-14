@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import "./Header.css";
+import { Link } from 'react-router-dom';
+import './Header.css';
 
 const Header = () => {
   return (
@@ -7,12 +7,18 @@ const Header = () => {
       <div className="header-inner">
         <div className="header-logo">
           <img src="main-logo.svg" alt="Main logo" height="24px" />
-          <span className="logo">Chrono <b>Bump</b></span>
+          <span className="logo">
+            Chrono <b>Bump</b>
+          </span>
         </div>
         <nav className="header-links">
           <ul>
-            <li><Link to={'/'} >Main</Link></li>
-            <li><Link to={'/about'} >About</Link></li>
+            <li>
+              <Link to={'/'}>Main</Link>
+            </li>
+            <li>
+              <Link to={'/about'}>About</Link>
+            </li>
           </ul>
         </nav>
       </div>

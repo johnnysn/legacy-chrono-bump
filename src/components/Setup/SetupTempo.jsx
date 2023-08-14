@@ -1,6 +1,6 @@
-import IncDec from "../UI/IncDec";
-import styles from "./SetupTempo.module.css";
-import useStore from "../../hooks/use-store";
+import IncDec from '../UI/IncDec';
+import styles from './SetupTempo.module.css';
+import useStore from '../../hooks/use-store';
 
 const SetupTempo = () => {
   const [beatsState, dispatch] = useStore();
@@ -18,7 +18,7 @@ const SetupTempo = () => {
   };
 
   return (
-    <div className={styles["setup-tempo"]}>
+    <div className={styles['setup-tempo']}>
       <IncDec value={beatsState.tempo} label={'BPM'} onInc={incHandler} onDec={decHandler} />
       <form>
         <input

@@ -9,7 +9,10 @@
     "build": "vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "lint": "eslint src/**/*.{js,jsx,json}",
+    "lint:fix": "eslint --fix src/**/*.{js,jsx,json}",
+    "format": "prettier --write src/**/*.{js,jsx,css,md,json} --config ./.prettierrc"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -20,7 +23,12 @@
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react": "^3.1.0",
+    "eslint": "^8.47.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-react": "^7.33.1",
     "gh-pages": "^5.0.0",
+    "prettier": "3.0.1",
     "vite": "^4.1.0"
   }
 }

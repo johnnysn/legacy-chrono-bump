@@ -25,7 +25,7 @@ header {
 }
 
 .header-links ul > li {
-  margin-left: .7rem;
+  margin-left: 0.7rem;
 }
 
 @media screen and (min-width: 940px) {

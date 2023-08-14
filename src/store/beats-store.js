@@ -1,4 +1,4 @@
-import { initStore } from "../hooks/use-store";
+import { initStore } from '../hooks/use-store';
 
 const defaultBeatsState = {
   items: [
@@ -18,9 +18,9 @@ const actions = {
     return { tempo: tempo };
   },
 
-  SET_LEVEL: (state, {id, level}) => {
+  SET_LEVEL: (state, { id, level }) => {
     if (level !== 1 && level !== 2 && level !== 3) return {};
-  
+
     const newitems = [...state.items];
     const itemIndex = newitems.findIndex((i) => i.id === id);
     const item = newitems[itemIndex];
@@ -28,13 +28,13 @@ const actions = {
       newitems[itemIndex] = { ...item, level: level };
       return { items: newitems };
     }
-  
+
     return {};
   },
 
   SET_COUNT: (state, count) => {
     if (count < 1 || count > 7) return {};
-  
+
     let newitems = [...state.items];
     if (count > state.items.length) {
       for (let i = state.items.length; i < count; i++) {
@@ -43,15 +43,15 @@ const actions = {
     } else if (count < state.items.length) {
       newitems = newitems.slice(0, count);
     }
-  
+
     return { items: newitems };
   },
 
   SET_BEAT: (state, beat) => {
     if (beat < 0 || beat > state.items.length) return state;
-  
+
     return { beat: beat };
-  }
+  },
 };
 
 const configureBeatsStore = () => {

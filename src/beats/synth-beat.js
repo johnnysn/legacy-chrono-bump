@@ -7,7 +7,7 @@ envelope.connect(audioContext.destination);
 const synthBeat = (level) => {
   envelope.gain.cancelScheduledValues(0);
   const oscillator = audioContext.createOscillator();
-  oscillator.type = "square";
+  oscillator.type = 'square';
   oscillator.frequency.value = level > 2 ? 1000 : level > 1 ? 800 : 600;
   oscillator.connect(envelope);
 

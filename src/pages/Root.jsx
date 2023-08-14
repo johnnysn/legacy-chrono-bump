@@ -1,15 +1,15 @@
-import { Outlet } from "react-router-dom";
-import Footer from "../components/Layout/Footer";
-import Header from "../components/Layout/Header";
-import "./Root.css";
+import { Outlet } from 'react-router-dom';
+import Footer from '../components/Layout/Footer';
+import Header from '../components/Layout/Header';
+import './Root.css';
 
-const Root = ({ children }) => {
+const Root = () => {
   return (
     <>
       <Header />
       <main className="main">
         <div className="main-inner">
-          <Outlet/>
+          <Outlet />
         </div>
       </main>
       <Footer />
