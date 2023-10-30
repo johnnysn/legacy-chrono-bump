@@ -1,7 +1,7 @@
 # :musical_note: Chrono Bump :guitar:
 
-![GitHub](https://img.shields.io/github/license/johnnysn/chrono-bump)
-![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/m/johnnysn/chrono-bump)
+![GitHub](https://img.shields.io/github/license/johnnysn/legacy-chrono-bump)
+![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/m/johnnysn/legacy-chrono-bump)
 
 
 ## A simple out-of-the-box metronome web application developed in React
